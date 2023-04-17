@@ -6,7 +6,7 @@ const { authMiddleware } = require("./middleware/authentication");
 const app = express();
 app.use(express.json());
 
-app.get("/",()=>{
+app.get("/",(req,res)=>{
     res.send({msg:"homeroute"})
 })
 
