@@ -1,2 +1,14 @@
 // aggregation pipeline
 
+db.users.aggregate([{$lookup:from:"transactions",
+localField:"_id"
+foreignField:"user_id"
+as:"totaltransactions"
+},
+{
+    $group:{_id:"$id",name:{$first:"$name"}}
+}
+
+{$sort:{balance:-1}} // to reverse sort
+])
+
